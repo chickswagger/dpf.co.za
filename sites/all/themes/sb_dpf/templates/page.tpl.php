@@ -262,15 +262,8 @@
       </div>
     <?php endif; ?>
 
-    <div id="copyright">
-    <!--Remove  -->
-    <?php if (!theme_get_setting('remove_copywrite')): ?>
-      <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print theme_get_setting('copywrite_holder') ?></p>
-    <?php endif; ?>
-    <!--Remove Theme Credit by Setting -->
-    <?php if (!theme_get_setting('display_theme_credit')): ?>
-      <p class="credits"> <?php print t('Theme Originally Created by'); ?>  <a href="http://www.devsaran.com">Devsaran</a></p>
-    <?php endif; ?>
+     <div id="copyright-full">
+     <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?> <br/> <?php print t('All rights reserved, website designed and hosted by'); ?>  <a title="StarBright" class="starbright_link" href="http://www.starbright.co.za"><span class="star">Star</span><span class="br">Br</span><span class="i">i</span><span class="g">g</span><span class="h">h</span><span class="t">t</span></a></p>
     <div class="clear"></div>
     </div>
   </div>

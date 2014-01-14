@@ -1,8 +1,8 @@
 name = Starbright DPF
-description = Professional Theme is a responsive Drupal 7 theme. Developed by <a href="http://www.devsaran.com" target="_blank">Devsaran.com</a>.
+description = Starbright is a responsive Drupal 7 theme. Developed by <a href="http://www.starbright.co.za" target="_blank">Starbright</a>.
 core = 7.x
 engine = phptemplate
-stylesheets[all][] = style.css
+stylesheets[all][] = css/style.css
 scripts[] = js/custom.js
 regions[sidebar_first]  = First Sidebar
 regions[sidebar_second] = Second Sidebar
