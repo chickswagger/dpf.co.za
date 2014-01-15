@@ -6,6 +6,7 @@ stylesheets[all][] = css/style.css
 scripts[] = js/custom.js
 regions[sidebar_first]  = First Sidebar
 regions[sidebar_second] = Second Sidebar
+regions[menu] 			= Main Menu
 regions[header]         = Header
 regions[front_welcome]  = Front Welcome
 regions[content]        = Content

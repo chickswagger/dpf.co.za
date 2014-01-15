@@ -64,13 +64,17 @@
  * @see template_process()
  */
 ?>
-
-<div id="wrapper">
+<div id="outer-wrapper">
+ <div id="outer-second-wrapper">
   <header id="header" role="banner">
     <?php if ($logo): ?><div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><img src="<?php print $logo; ?>"/></a></div><?php endif; ?>
     <?php if ($site_name): ?><h1 id="site-title"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a></h1><?php endif; ?>
     <?php if ($site_slogan): ?><div id="site-description"><?php print $site_slogan; ?></div><?php endif; ?>
     <div class="clear"></div>
+	  <?php if ($page['menu']): ?>
+	   <div id="menu">
+		<?php print render($page['menu']); ?>
+	   </div>
 	<?php 
 		/* Disable Main menu if unchecked */
 		if ($main_menu == TRUE): 
@@ -87,123 +91,25 @@
 			print drupal_render($main_menu_tree);
 		?>
       </div>
+	
+
       <div class="clear"></div>
     </nav>
 	<?php endif;?><!-- end main-menu -->
+	
   </header>
-
-
-  <div id="container">
-
-    <?php if ($is_front || theme_get_setting('slideshow_all')): ?>
-      <?php if (theme_get_setting('slideshow_display')): ?>
-        <!-- Slides -->
-        <?php
-        $slide1_head = check_plain(theme_get_setting('slide1_head'));
-        $slide1_desc = filter_xss_admin(theme_get_setting('slide1_desc'));
-        $slide1_url = check_plain(theme_get_setting('slide1_url'));
-        $slide1_img = check_plain(theme_get_setting('slide1_image_url'));
-        $slide_alt = check_plain(theme_get_setting('slide_alt'));
-
-        $slide2_head = check_plain(theme_get_setting('slide2_head'));
-        $slide2_desc = filter_xss_admin(theme_get_setting('slide2_desc'));
-        $slide2_url = check_plain(theme_get_setting('slide2_url'));
-        $slide2_img = check_plain(theme_get_setting('slide2_image_url'));
-        $slide2_alt = check_plain(theme_get_setting('slide2_alt'));
-
-        $slide3_head = check_plain(theme_get_setting('slide3_head'));
-        $slide3_desc = filter_xss_admin(theme_get_setting('slide3_desc'));
-        $slide3_url = check_plain(theme_get_setting('slide3_url'));
-        $slide3_img = check_plain(theme_get_setting('slide3_image_url'));
-        $slide3_alt = check_plain(theme_get_setting('slide3_alt'));
-
-        // Default values in case the alt text is not populated.
-        if ($slide_alt == ""):
-          $slide_alt = "slider image 1";
-        endif;
-        if ($slide2_alt == ""):
-          $slide2_alt = "slider image 2";
-        endif;
-        if ($slide3_alt == ""):
-          $slide3_alt = "slider image 3";
-        endif;
-        ?>
-    <section id="slider">
-    <ul class="slides">
-      <li>
-        <article class="post">
-        <div class="entry-container">
-          <header class="entry-header">
-            <h2 class="entry-title"><a href="<?php print url($slide1_url); ?>"><?php print $slide1_head; ?></a></h2>
-          </header><!-- .entry-header -->
-          <div class="entry-summary">
-                <?php print $slide1_desc; ?>
-          </div><!-- .entry-summary -->
-          <div class="clear"></div>
-        </div><!-- .entry-container -->
-            <a href="<?php print url($slide1_url); ?>">
-	    <?php if($slide1_img != '') { ?>
-            <img src="<?php print $slide1_img; ?>" class="slide-image" alt="<?php print $slide_alt; ?>" /> </a>
-            <?php } else { ?>
-            <img src="<?php print base_path() . drupal_get_path('theme', 'sb_dpf') . '/images/slide-image-1.jpg'; ?>" class="slide-image" alt="<?php print $slide_alt; ?>" /></a>
-        <?php } ?>
-	<div class="clear"></div>
-        </article>
-      </li>
-
-      <li>
-        <article class="post">
-        <div class="entry-container">
-          <header class="entry-header">
-            <h2 class="entry-title"><a href="<?php print url($slide2_url); ?>"><?php print $slide2_head; ?></a></h2>
-          </header><!-- .entry-header -->
-          <div class="entry-summary">
-                <?php print $slide2_desc; ?>
-          </div><!-- .entry-summary -->
-          <div class="clear"></div>
-        </div><!-- .entry-container -->
-            <a href="<?php print url($slide2_url); ?>">
-		<?php if($slide2_img != '') { ?>
-            	<img src="<?php print $slide2_img; ?>" class="slide-image" alt="<?php print $slide2_alt; ?>" /> </a>
-		<?php } else { ?>
-            <img src="<?php print base_path() . drupal_get_path('theme', 'sb_dpf') . '/images/slide-image-2.jpg'; ?>" class="slide-image" alt="<?php print $slide2_alt; ?>"  /></a>
-        	<?php } ?>
-	<div class="clear"></div>
-        </article>
-      </li>
-
-      <li>
-        <article class="post">
-        <div class="entry-container">
-          <header class="entry-header">
-            <h2 class="entry-title"><a href="<?php print url($slide3_url); ?>"><?php print $slide3_head; ?></a></h2>
-          </header><!-- .entry-header -->
-          <div class="entry-summary">
-                <?php print $slide3_desc; ?>
-          </div><!-- .entry-summary -->
-          <div class="clear"></div>
-        </div><!-- .entry-container -->
-            <a href="<?php print url($slide3_url); ?>">
-		<?php if($slide3_img != '') { ?>
-            <img src="<?php print $slide3_img; ?>" class="slide-image" alt="<?php print $slide3_alt; ?>" /> </a>
-		<?php } else { ?>
-            <img src="<?php print base_path() . drupal_get_path('theme', 'sb_dpf') . '/images/slide-image-3.jpg'; ?>" class="slide-image" alt="<?php print $slide3_alt; ?>" /></a>
-		<?php } ?>
-         <div class="clear"></div>
-        </article>
-      </li>
-    </ul>
-    </section>
-       <?php endif; ?>
-    <?php endif; ?>
-
-
-   <?php if ($page['header']): ?>
+  <div id="header-second">
+   <?php endif; ?>
+  <?php if ($page['header']): ?>
    <div id="head">
     <?php print render($page['header']); ?>
    </div>
    <div class="clear"></div>
    <?php endif; ?>
+   </div>
+</div>
+<div id="wrapper">
+  <div id="container">
 
     <div class="content-sidebar-wrap">
 
@@ -245,26 +151,29 @@
    <?php endif; ?>
   </div>
 
-
-
-  <div id="footer">
-    <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third']): ?>
-      <div id="footer-area" class="clearfix">
-        <?php if ($page['footer_first']): ?>
-        <div class="column"><?php print render($page['footer_first']); ?></div>
-        <?php endif; ?>
-        <?php if ($page['footer_second']): ?>
-        <div class="column"><?php print render($page['footer_second']); ?></div>
-        <?php endif; ?>
-        <?php if ($page['footer_third']): ?>
-        <div class="column"><?php print render($page['footer_third']); ?></div>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-
-     <div id="copyright-full">
-     <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?> <br/> <?php print t('All rights reserved, website designed and hosted by'); ?>  <a title="StarBright" class="starbright_link" href="http://www.starbright.co.za"><span class="star">Star</span><span class="br">Br</span><span class="i">i</span><span class="g">g</span><span class="h">h</span><span class="t">t</span></a></p>
-    <div class="clear"></div>
-    </div>
-  </div>
 </div>
+	<div id="footer-bottom">
+		  <div id="footer">
+			<?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third']): ?>
+			  <div id="footer-area" class="clearfix">
+				<?php if ($page['footer_first']): ?>
+				<div class="column"><?php print render($page['footer_first']); ?></div>
+				<?php endif; ?>
+				<?php if ($page['footer_second']): ?>
+				<div class="column"><?php print render($page['footer_second']); ?></div>
+				<?php endif; ?>
+				<?php if ($page['footer_third']): ?>
+				<div class="column"><?php print render($page['footer_third']); ?></div>
+				<?php endif; ?> 
+					
+				</div>
+			<?php endif; ?>
+					<div class="copyright">
+					<?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?> <br/> <?php print t('All rights reserved, website designed and hosted by'); ?>  <a title="StarBright" class="starbright_link" href="http://www.starbright.co.za"><span class="star">Star</span><span class="br">Br</span><span class="i">i</span><span class="g">g</span><span class="h">h</span><span class="t">t</span></a></p>
+					<div class="clear"></div>
+					</div>
+			
+		  </div>
+	  </div>
+</div>
+
